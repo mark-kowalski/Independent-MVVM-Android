@@ -25,11 +25,6 @@ repositories {
         name = "GitHubPackages"
         url = uri("https://maven.pkg.github.com/mark-kowalski/Reusable-Android-Patterns")
         url = uri("https://maven.pkg.github.com/mark-kowalski/KotlinExtensions-Android")
-        credentials {
-            // Save your time. The access token has only read authorization.
-            username = "mark-kowalski"
-            password = "8d290f236f70b13a15fae2a0b39eee252939e9db"
-        }
     }
 }
 
