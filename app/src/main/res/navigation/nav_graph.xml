@@ -9,7 +9,12 @@
         android:id="@+id/searchFragment"
         android:name="dev.kowalski.independentmvvm.view.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <argument
+            android:name="has_connection"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="dev.kowalski.independentmvvm.view.result.ResultFragment"
