@@ -7,13 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import dev.kowalski.independentmvvm.MainActivity
 import dev.kowalski.independentmvvm.R
+import dev.kowalski.independentmvvm.api.api.model.LyricsSearchResult
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.layout_search_form.*
 
 class SearchFragment : Fragment() {
 
     private val navigationArguments: SearchFragmentArgs by navArgs()
+    private val viewModel: SearchViewModel by viewModels()
 
     private var listener: OnFragmentInteractionListener? = null
 
@@ -39,6 +45,14 @@ class SearchFragment : Fragment() {
 
         noConnectionTextView.visibility = if (navigationArguments.hasConnection) View.GONE else View.VISIBLE
         searchForm.visibility = if (navigationArguments.hasConnection) View.VISIBLE else View.GONE
+
+        viewModel.lyricsSearchResult.observe(this.activity as MainActivity, Observer<LyricsSearchResult> { result ->
+            val test = result.lyrics
+        })
+
+        searchFormSearchButton.setOnClickListener {
+            viewModel.getLyrics()
+        }
     }
 
     override fun onDetach() {

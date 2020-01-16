@@ -41,6 +41,8 @@ repositories {
 
 dependencies {
     def nav_version = "2.1.0"
+    def arch_version = "2.0.0"
+    def retrofit_version = "2.4.0"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
@@ -52,11 +54,19 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "com.google.android.material:material:1.1.0-rc01"
 
-    implementation "dev.kowalski.dry:ReusableAndroidPatterns:0.0.1"
-    implementation "dev.kowalski.kotlinsugar:KotlinExtensions:0.0.1"
+    // Arch
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$arch_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$arch_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
     implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
 
     testImplementation "junit:junit:4.12"
+    testImplementation "io.mockk:mockk:1.9.3"
+    androidTestImplementation "io.mockk:mockk-android:1.9.3"
 }
